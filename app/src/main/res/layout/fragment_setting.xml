@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.setting.SettingFragment">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="20dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:hint="@string/setting_server_ip"
+            android:padding="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/setting_text_server_ip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#616161"
+                android:inputType="number|numberDecimal"
+                android:digits="0123456789."/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:hint="@string/setting_server_port"
+            android:padding="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/setting_text_server_port"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#616161"
+                android:inputType="number"
+                android:digits="0123456789"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:hint="@string/setting_nickname"
+            android:padding="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/setting_text_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#616161"
+                android:inputType="text"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:text="save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:icon="@drawable/ic_save_24"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="5dp"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:padding="15dp"
+        />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
