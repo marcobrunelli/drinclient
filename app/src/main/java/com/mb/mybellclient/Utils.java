@@ -1,5 +1,9 @@
 package com.mb.mybellclient;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Build;
 
 import java.io.*;
@@ -8,6 +12,7 @@ import java.util.*;
 
 public class Utils {
 
+    private static SharedPreferences sharedPref = null;
     /**
      * Convert byte array to hex string
      * @param bytes toConvert
@@ -145,5 +150,23 @@ public class Utils {
         } else {
             return Character.toUpperCase(first) + s.substring(1);
         }
+    }
+
+    public static void getSharedPreferences(Activity activity) {
+        if (sharedPref == null) {
+            sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
+        }
+    }
+
+    public static String getSharedPreferencesValue(Activity activity,String key) {
+        getSharedPreferences(activity);
+        return sharedPref.getString(key,"");
+    }
+
+    public static void setSharedPreferencesValue(Activity activity,String key,String value) {
+        getSharedPreferences(activity);
+        Editor edit = sharedPref.edit();
+        edit.putString(key,value);
+        edit.commit();
     }
 }

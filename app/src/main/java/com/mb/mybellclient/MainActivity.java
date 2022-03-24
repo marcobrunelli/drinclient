@@ -64,25 +64,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void configSharePreferences(NavigationView navigationView,NavController navController) {
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        String server_ip = sharedPref.getString("SERVER_IP","");
-        String server_port = sharedPref.getString("SERVER_PORT","");
-        String client_name = sharedPref.getString("CLIENT_NAME","");
+
+        String server_ip = Utils.getSharedPreferencesValue(this,"SERVER_IP");
+        String server_port = Utils.getSharedPreferencesValue(this,"SERVER_PORT");
+        String nickname = Utils.getSharedPreferencesValue(this,"NICKNAME");
+
         if (
-                StringUtils.isEmpty(server_ip) ||
-                        StringUtils.isEmpty(server_port) ||
-                        StringUtils.isEmpty(client_name)
+            StringUtils.isBlank(server_ip) ||
+            StringUtils.isBlank(server_port)
         ) {
+            new MaterialAlertDialogBuilder(MainActivity.this,R.style.RoundShapeTheme)
+                .setTitle(R.string.dialog_title_alert)
+                .setMessage(R.string.dialog_msg_server_ipport)
+                .setPositiveButton(R.string.dialog_button_settings, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        navigationView.setCheckedItem(R.id.nav_setting);
+                        navController.navigate(R.id.nav_setting);
+                    }
+                })
+                .setNegativeButton(R.string.dialog_button_cancel,null)
+                .show();
+        } else if (StringUtils.isBlank(nickname)) {
             new MaterialAlertDialogBuilder(MainActivity.this,R.style.RoundShapeTheme)
                     .setTitle(R.string.dialog_title_alert)
                     .setMessage(R.string.dialog_msg_server_ipport)
-                    .setPositiveButton(R.string.dialog_button_ok, new DialogInterface.OnClickListener() {
+                    .setPositiveButton(R.string.dialog_button_settings, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             navigationView.setCheckedItem(R.id.nav_setting);
                             navController.navigate(R.id.nav_setting);
                         }
                     })
+                    .setNegativeButton(R.string.dialog_button_cancel,null)
                     .show();
         }
     }

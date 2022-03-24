@@ -20,7 +20,10 @@
 
     <string name="dialog_title_alert">Attention</string>
     <string name="dialog_button_ok">OK</string>
-    <string name="dialog_msg_server_ipport">Entering the address of the control unit and the port</string>
+    <string name="dialog_button_settings">SETTINGS</string>
+    <string name="dialog_button_cancel">CANCEL</string>
+    <string name="dialog_msg_server_ipport">Entering the address and the port of the control unit</string>
+    <string name="dialog_msg_client_nickname">Entering the nickname</string>
 
     <string name="setting_server_ip">Server IP</string>
     <string name="setting_server_port">Server PORT</string>
